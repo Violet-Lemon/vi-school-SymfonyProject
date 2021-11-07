@@ -1,0 +1,28 @@
+{% include 'base.html.twig' %}
+
+{% block body %}
+    <h2>Список запросов</h2>
+    <div>
+        <table class="table table-striped table-hover table-bordered align-middle">
+            <thead class="table-dark">
+            <tr>
+                <th style="width: 10%">Номер</th>
+                <th>Заголовок</th>
+                <th style="width: 10%">Статус</th>
+                <th>Дата создания</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for request in requestList %}
+                <tr>
+                    <td>{{ request.id }}</td>
+                    <td><a href="{{ path('request.show', { 'id': request.id }) }}"
+                           class="link-dark">{{ request.title }}</a></td>
+                    <td>{{ request.status }}</td>
+                    <td>{{ request.createAt.format('Y.m.d H:i:s') }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
