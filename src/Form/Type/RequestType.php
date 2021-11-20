@@ -3,7 +3,6 @@
 namespace App\Form\Type;
 
 use App\DTO\RequestDTO;
-use App\Entity\Request;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;

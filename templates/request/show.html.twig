@@ -3,7 +3,10 @@
 {% block body %}
     <a href="{{ path('request.list') }}" class="btn btn-outline-dark" role="button">К списку запросов</a>
     <a href="{{ path('request.add') }}" class="btn btn-outline-dark" role="button">Добавить новый запрос</a>
-    <h2 style="margin-top: 20px"> {{ request.title }} </h2>
+    <h2 style="margin-top: 20px">
+        {{ request.title }}
+        <a href="{{ path('request.edit', {'id': request.id}) }}" class="btn btn-outline-dark" role="button">Редактировать</a>
+    </h2>
     <div>
         <table class="table table-bordered align-middle">
             <tbody>

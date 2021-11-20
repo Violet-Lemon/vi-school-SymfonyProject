@@ -50,6 +50,13 @@ class Request
         return new self($dto->getTitle(), $dto->getMessage());
     }
 
+    public function updateFromDTO(RequestDTO $dto): self
+    {
+        $this->setTitle($dto->getTitle());
+        $this->setMessage($dto->getMessage());
+        return $this;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
