@@ -65,11 +65,14 @@ class RequestController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $requestEntity = RequestEntity::createFromDTO($requestDTO);
+            $userId = $this->getUser();
+//            $requestEntity->setCreatedBy($user->);
+
             $this->entityManager->persist($requestEntity);
             $this->entityManager->flush();
 
             return $this->redirectToRoute('request.show', [
-                'id' => $requestEntity->getId()
+                'id' => $requestEntity->getId(),
             ]);
         }
 

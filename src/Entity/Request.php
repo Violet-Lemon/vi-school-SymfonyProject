@@ -38,11 +38,30 @@ class Request
      */
     private DateTime $createAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="requests")
+     */
+    private $createdBy;
+
+    public function getCreatedBy(): ?User
+    {
+        return $this->createdBy;
+    }
+
+    public function setCreatedBy(?User $createdBy): self
+    {
+        $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
     public function __construct(string $title, string $message)
     {
         $this->title = $title;
         $this->message = $message;
         $this->createAt = new DateTime();
+        $this->createdBy = null;
+
     }
 
     public static function createFromDTO(RequestDTO $dto): self
