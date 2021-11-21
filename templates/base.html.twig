@@ -19,7 +19,9 @@
 <body style="padding: 10px">
 <header class="d-flex justify-content-center py-3">
     <ul class="nav nav-pills">
-        <li class="nav-item"><a href="{{ path('app.registration') }}" class="btn btn-outline-dark">Регистрация</a></li>
+        <li class="nav-item" style="margin-right: 10px"><a href="{{ path('app.registration') }}" class="btn btn-outline-dark">Регистрация</a></li>
+        <li class="nav-item" style="margin-right: 10px" ><a href="{{ path('app.login') }}" class="btn btn-outline-dark">Авторизация</a></li>
+        <li class="nav-item" style="margin-right: 10px" ><a href="{{ path('app.logout') }}" class="btn btn-outline-dark">Выход</a></li>
     </ul>
 </header>
 {% block body %}{% endblock %}
