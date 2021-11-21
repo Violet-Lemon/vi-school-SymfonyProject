@@ -17,6 +17,11 @@
     {% endblock %}
 </head>
 <body style="padding: 10px">
+<header class="d-flex justify-content-center py-3">
+    <ul class="nav nav-pills">
+        <li class="nav-item"><a href="{{ path('app.registration') }}" class="btn btn-outline-dark">Регистрация</a></li>
+    </ul>
+</header>
 {% block body %}{% endblock %}
 </body>
 </html>

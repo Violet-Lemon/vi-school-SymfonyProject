@@ -6,19 +6,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class DefaultController extends AbstractController
+class SecurityController extends AbstractController
 {
-
     /**
-     * @Route("/", name="homepage")
-     *
-     * @return Response
+     * @Route("/login", name="app.login")
      */
-
-    public function indexAction(): Response
+    public function login(): Response
     {
-        return $this->render('base.html.twig');
+        return $this->render('app/login.html.twig');
+
     }
 
 }
-
