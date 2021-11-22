@@ -40,6 +40,7 @@ class Request
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="requests")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $createdBy;
 
@@ -61,7 +62,6 @@ class Request
         $this->message = $message;
         $this->createAt = new DateTime();
         $this->createdBy = null;
-
     }
 
     public static function createFromDTO(RequestDTO $dto): self

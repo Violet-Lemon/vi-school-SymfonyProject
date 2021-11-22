@@ -42,12 +42,15 @@ class RequestController extends AbstractController
     public function showRequestAction(int $id, RequestRepository $requestRepository): Response
     {
         $request = $requestRepository->findById($id);
+        $email = $request->getCreatedBy()->getEmail();
+
         if (is_null($request)) {
             throw new NotFoundHttpException('Запрос не найден');
         }
 
         return $this->render('request/show.html.twig', [
-            'request' => $request
+            'request' => $request,
+            'email' => $email
         ]);
     }
 
@@ -65,9 +68,8 @@ class RequestController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $requestEntity = RequestEntity::createFromDTO($requestDTO);
-            $userId = $this->getUser();
-//            $requestEntity->setCreatedBy($user->);
-
+            $user = $this->getUser();
+            $requestEntity->setCreatedBy($user);
             $this->entityManager->persist($requestEntity);
             $this->entityManager->flush();
 
