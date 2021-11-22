@@ -42,7 +42,11 @@ class RequestController extends AbstractController
     public function showRequestAction(int $id, RequestRepository $requestRepository): Response
     {
         $request = $requestRepository->findById($id);
-        $email = $request->getCreatedBy()->getEmail();
+        if ($request->getCreatedBy() === null) {
+            $email = 'Заявка от неизвестного пользователя';
+        } else {
+            $email = $request->getCreatedBy()->getEmail();
+        }
 
         if (is_null($request)) {
             throw new NotFoundHttpException('Запрос не найден');
